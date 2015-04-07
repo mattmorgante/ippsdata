@@ -14,7 +14,15 @@
     State
     <%= f.select(
       :with_state,
-      @filterrific.select_options[:state],
+      @filterrific.select_options[:with_state],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    Procedure
+    <%= f.select(
+      :with_drg,
+      @filterrific.select_options[:with_drg],
       { include_blank: '- Any -' }
     ) %>
   </div>

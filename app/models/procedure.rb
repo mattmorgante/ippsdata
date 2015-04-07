@@ -1,19 +1,31 @@
 class Procedure < ActiveRecord::Base
 
   filterrific(
-  default_settings: { sorted_by: 'drg' },
+  defailt_filter_params: { sorted_by: 'created_at_desc' },
     available_filters: [
-      :sorted_by,
-      :search_query,
-      :with_state
+      :with_average_charges,
+      :with_state,
+      :with_drg
     ]
   )
-  scope :with_state, proc { |states| 
+  scope :with_state, lambda { |states| 
     where(state: [*states])
   }
+  scope :with_drg, lambda { |drgs|
+    where(drg: [*drgs])
+  }
 
-  self.per_page = 50 
+  self.per_page = 51
   
+
+  def self.options_for_sorted_by
+    [
+      ['Name (a-z)', 'drg_asc'],
+      ['Most Expensive', 'average_charges_desc'],
+      ['Least Expensive', 'average_charges_asc'],
+    ]
+  end
+
   require 'csv'
 
   def self.import(file)
