@@ -1,0 +1,38 @@
+<h1>Procedures#index</h1>
+<p>Find me in app/views/procedures/index.html.erb</p>
+<%= flash[:notice] %>
+<table>
+  <thead>
+    <tr>
+      <th>DRG</th>
+      <th>State</th>
+      <th>Discharges</th>
+      <th>Average Charges</th>
+      <th>Average Total Payments</th>
+      <th>Average Medicare Payments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @procedures.each do |procedure| %>
+      <tr>
+        <td><%= procedure.DRG %></td>
+        <td><%= procedure.State %></td>
+        <td><%= procedure.Discharges %></td>
+        <td><%= procedure.Average_Charges.round(2) %></td>
+        <td><%= procedure.Average_Total_Payments.round(2) %></td>
+        <td><%= procedure.Average_Medicare_Payments.round(2) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<div>
+
+<h4>Import that data!</h4>
+  <%= form_tag import_procedures_path, multipart: true do %>
+    <%= file_field_tag :file %>
+    <%= submit_tag "Import CSV" %>
+  <% end %>
+</div>
+
+
+

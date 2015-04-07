@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  DRG: 
+  State: 
+  Discharges: 
+  Average_Charges: 
+  Average_Total_Payments: 
+  Average_Medicare_Payments: 1.5
+
+two:
+  DRG: 
+  State: 
+  Discharges: 
+  Average_Charges: 
+  Average_Total_Payments: 
+  Average_Medicare_Payments: 1.5
