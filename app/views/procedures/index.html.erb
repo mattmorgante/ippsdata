@@ -1,40 +1,53 @@
 <%# app/views/students/index.html.erb %>
-<h1>Procedures</h1>
+<div class="jumbotron">
+  <div id="myjumbo">
+    <div class="title">
+      <h2> Medicare Cost Comparison Tool</h2>
+    </div>
+    <ul>
+      <li> This application leverages open healthcare data from <a href="http://www.cms.gov">CMS.gov</a>. It includes only average prices for the top 100 inpatient medicare conditions</li>
+      <li> Costs are sorted from lowest to highest based on Average Total Charges</li> 
+      <li> To view average medicare costs for a specific procedure around the US, filter by procedure </li>
+      <li> To view average medicare costs for the top 100 inpatient procedures in a certain state, filter by state </li>
+      <li> Please see my <a href="http://www.mattmorgante.com">blog post</a> for limitations assocated with this data set</li>
+      
+    </ul>
+  </div>
+</div>
 
-<%#
-  Filterrific adds the `form_for_filterrific` view helper:
-  * adds dom id 'filterrific_filter'
-  * applies javascript behaviors:
-      * AJAX form submission on change
-      * AJAX spinner while AJAX request is being processed
-  * sets form_for options like :url, :method and input name prefix
-%>
+<div class = "note">
+  <p> **Note: MCC stands for Major Complications or Comorbidities, CC stands for Complications or Comorbidities**</p>
+</div> 
+
 <%= form_for_filterrific @filterrific do |f| %>
-  <div>
-    State
-    <%= f.select(
-      :with_state,
-      @filterrific.select_options[:with_state],
-      { include_blank: '- Any -' }
-    ) %>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+         Procedure
+        <%= f.select(
+          :with_drg,
+          @filterrific.select_options[:with_drg],
+          { include_blank: '- Any -' }
+        ) %>
+      </div>
+      <div class="col-md-2">
+       State
+        <%= f.select(
+          :with_state,
+          @filterrific.select_options[:with_state],
+          { include_blank: '- Any -' }
+        ) %>
+      </div>
+      <div class="col-md-2">
+        <%= link_to(
+          'Reset filters',
+          reset_filterrific_url,
+        ) %>
+      </div>
+    </div>
   </div>
-  <div>
-    Procedure
-    <%= f.select(
-      :with_drg,
-      @filterrific.select_options[:with_drg],
-      { include_blank: '- Any -' }
-    ) %>
-  </div>
-  <div>
-    <%= link_to(
-      'Reset filters',
-      reset_filterrific_url,
-    ) %>
-  </div>
-  <%# add an automated spinner to your form when the list is refreshed %>
-  <%= render_filterrific_spinner %>
 <% end %>
+
 <%= render(
   partial: 'procedures/list',
   locals: { procedures: @procedures }
