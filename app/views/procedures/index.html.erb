@@ -7,9 +7,9 @@
     <ul>
       <li> This application leverages open healthcare data from <a href="http://www.cms.gov">CMS.gov</a>. It includes only average prices for the top 100 inpatient medicare conditions</li>
       <li> Costs are sorted from lowest to highest based on Average Total Charges</li> 
-      <li> To view average medicare costs for a specific procedure around the US, filter by procedure </li>
+      <li> To view average medicare costs for a specific procedure around the US, filter by condition </li>
       <li> To view average medicare costs for the top 100 inpatient procedures in a certain state, filter by state </li>
-      <li> Please see my <a href="http://www.mattmorgante.com">blog post</a> for limitations assocated with this data set</li>
+      <li> Please see my <a href="http://www.mattmorgante.com">blog post</a> for a brief overview and limitations assocated with this data set</li>
       
     </ul>
   </div>
@@ -23,7 +23,7 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col-md-8">
-         Procedure
+         Condition
         <%= f.select(
           :with_drg,
           @filterrific.select_options[:with_drg],
