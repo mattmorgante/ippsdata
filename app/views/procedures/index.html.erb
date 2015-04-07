@@ -27,3 +27,7 @@
   <%# add an automated spinner to your form when the list is refreshed %>
   <%= render_filterrific_spinner %>
 <% end %>
+<%= render(
+  partial: 'procedures/list',
+  locals: { procedures: @procedures }
+) %>

@@ -16,8 +16,8 @@ class ProceduresController < ApplicationController
       select_options: { 
       state: Procedure.with_state
     },
-    ) 
-    return
+      persistence_id: 'shared_key'
+    ) or return
     @procedures = @filterrific.find.page(params[:page])
 
     respond_to do |format|

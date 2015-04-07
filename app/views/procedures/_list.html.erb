@@ -2,7 +2,7 @@
 <div id="filterrific_results">
 
   <div>
-    <%= page_entries_info procedures # provided by will_paginate %>
+    <%= page_entries_info procedures %>
   </div>
 
   <table>
@@ -14,9 +14,9 @@
       <th>Average Total Payments</th>
       <th>Average Medicare Payments</th>
     </tr>
-    <% procedures.each do |procedure| %>
+    <% @procedures.each do |procedure| %>
       <tr>
-        <td><%= procedure.drg # do these need to be instance vars? %></td>
+        <td><%= procedure.drg %></td>
         <td><%= procedure.state %></td>
         <td><%= procedure.discharges %></td>
         <td><%= procedure.average_charges.round(2) %></td>
@@ -27,4 +27,4 @@
   </table>
 </div>
 
-<%= will_paginate students # provided by will_paginate %>
+<%= will_paginate procedures %>
