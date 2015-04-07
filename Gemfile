@@ -3,6 +3,12 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.0'
+gem 'awesome_print'
+gem 'bootstrap'
+gem 'bootstrap-sass'
+gem 'has_scope'
+gem 'filterrific'
+gem 'will_paginate'
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets

@@ -1,0 +1,30 @@
+<%# app/views/students/_list.html.erb %>
+<div id="filterrific_results">
+
+  <div>
+    <%= page_entries_info procedures # provided by will_paginate %>
+  </div>
+
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>State</th>
+      <th>Discharges</th>
+      <th>Average Charges</th>
+      <th>Average Total Payments</th>
+      <th>Average Medicare Payments</th>
+    </tr>
+    <% procedures.each do |procedure| %>
+      <tr>
+        <td><%= procedure.drg # do these need to be instance vars? %></td>
+        <td><%= procedure.state %></td>
+        <td><%= procedure.Discharges %></td>
+        <td><%= procedure.Average_Charges.round(2) %></td>
+        <td><%= procedure.Average_Total_Payments.round(2) %></td>
+        <td><%= procedure.Average_Medicare_Payments.round(2) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+<%= will_paginate students # provided by will_paginate %>

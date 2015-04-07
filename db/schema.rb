@@ -11,18 +11,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150407023006) do
+ActiveRecord::Schema.define(version: 20150407044840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "procedures", force: :cascade do |t|
-    t.string   "DRG"
-    t.string   "State"
-    t.integer  "Discharges"
-    t.float    "Average_Charges"
-    t.float    "Average_Total_Payments"
-    t.float    "Average_Medicare_Payments"
+    t.string   "drg"
+    t.string   "state"
+    t.integer  "discharges"
+    t.float    "average_charges"
+    t.float    "average_total_payments"
+    t.float    "average_medicare_payments"
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end

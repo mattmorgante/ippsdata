@@ -1,38 +1,34 @@
-<h1>Procedures#index</h1>
-<p>Find me in app/views/procedures/index.html.erb</p>
-<%= flash[:notice] %>
-<table>
-  <thead>
-    <tr>
-      <th>DRG</th>
-      <th>State</th>
-      <th>Discharges</th>
-      <th>Average Charges</th>
-      <th>Average Total Payments</th>
-      <th>Average Medicare Payments</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @procedures.each do |procedure| %>
-      <tr>
-        <td><%= procedure.DRG %></td>
-        <td><%= procedure.State %></td>
-        <td><%= procedure.Discharges %></td>
-        <td><%= procedure.Average_Charges.round(2) %></td>
-        <td><%= procedure.Average_Total_Payments.round(2) %></td>
-        <td><%= procedure.Average_Medicare_Payments.round(2) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-<div>
+<%# app/views/students/index.html.erb %>
+<h1>Procedures</h1>
 
-<h4>Import that data!</h4>
-  <%= form_tag import_procedures_path, multipart: true do %>
-    <%= file_field_tag :file %>
-    <%= submit_tag "Import CSV" %>
-  <% end %>
-</div>
+<%#
+  Filterrific adds the `form_for_filterrific` view helper:
+  * adds dom id 'filterrific_filter'
+  * applies javascript behaviors:
+      * AJAX form submission on change
+      * AJAX spinner while AJAX request is being processed
+  * sets form_for options like :url, :method and input name prefix
+%>
+<%= form_for_filterrific @filterrific do |f| %>
+  <div>
+    State
+    <%= f.select(
+      :state,
+      @filterrific.select_options[:state],
+      { include_blank: '- Any -' }
+    ) %>
+  </div>
+  <div>
+    <%= link_to(
+      'Reset filters',
+      reset_filterrific_url,
+    ) %>
+  </div>
+  <%# add an automated spinner to your form when the list is refreshed %>
+  <%= render_filterrific_spinner %>
+<% end %>
 
-
-
+<%= render(
+  partial: 'procedures/list',
+  locals: { procedures: @procedures }
+) %>
