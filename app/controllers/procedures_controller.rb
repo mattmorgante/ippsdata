@@ -1,15 +1,20 @@
+  require 'builder'
+  require 'will_paginate'
+
 class ProceduresController < ApplicationController
   # def index
   #   @procedures = Procedure.all
   #   # @procedures = Procedure.procedure_name("039")
   # end
 
+
+
   def index
     @filterrific = initialize_filterrific(
       Procedure,
       params[:filterrific],
       select_options: { 
-      price: Procedure.with_average_charges
+      state: Procedure.with_state
     },
     ) 
     return

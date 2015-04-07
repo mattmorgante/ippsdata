@@ -1,14 +1,16 @@
 class Procedure < ActiveRecord::Base
-  belongs_to :country
 
   filterrific(
-  available_filters: [
-    :with_state
-  ]
-)
-  scope :with_country_id, lambda { |country_ids|
-  where(country_id: [*country_ids])
-}
+  default_settings: { sorted_by: 'drg' },
+    available_filters: [
+      :sorted_by,
+      :search_query,
+      :with_state
+    ]
+  )
+  scope :with_state, proc { |states| 
+    where(state: [*states])
+  }
 
   self.per_page = 50 
   

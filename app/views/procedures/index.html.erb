@@ -13,7 +13,7 @@
   <div>
     State
     <%= f.select(
-      :state,
+      :with_state,
       @filterrific.select_options[:state],
       { include_blank: '- Any -' }
     ) %>
@@ -27,8 +27,3 @@
   <%# add an automated spinner to your form when the list is refreshed %>
   <%= render_filterrific_spinner %>
 <% end %>
-
-<%= render(
-  partial: 'procedures/list',
-  locals: { procedures: @procedures }
-) %>
