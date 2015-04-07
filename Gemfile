@@ -9,6 +9,7 @@ gem 'bootstrap-sass'
 gem 'has_scope'
 gem 'filterrific'
 gem 'will_paginate'
+gem 'rails_12factor', group: :production
 # Use postgresql as the database for Active Record
 gem 'pg'
 # Use SCSS for stylesheets
