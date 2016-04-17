@@ -1,28 +1,38 @@
-== README
+Medicare Cost Comparison
+Recently, I discovered the open healthcare data available on CMS.gov and downloaded a few different reports to see what helpful insights I might be able to discover. One of the more interesting data sets I uncovered was the Medicare Provider Utilization and Payment Data, which I used to produce this simple Cost Comparison Tool. 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Did I lose you yet? What does that even mean? Let's try and break some of those convoluted healthcare terms into plain English. 
 
-Things you may want to cover:
+ 
 
-* Ruby version
+MEDICARE
 
-* System dependencies
+Medicare provides health coverage for tens of millions of Americans; most are over the age of 65, but it also includes younger people with disabilities. Shockingly, Medicare costs make up 14% of the entire national budget. In 2011, the year I downloaded data from, Medicare incurred 47% of the total national hospital costs, accounting for $182.7 billion in spending in hospitals alone. 
 
-* Configuration
+This is just the beginning for Medicare costs. Throughout the next 19 years, 10,000 Americans will turn 65 every day. You can learn more about Medicare, including cost and utilization projections for both the short-term and long-term future right here. 
 
-* Database creation
+ 
 
-* Database initialization
+UTILIZATION AND PAYMENT DATA 
 
-* How to run the test suite
+Simply said, the Medicare Provider Utilization and Payment Data breaks down how often Medicare patients are going to the hospital and how much each visit costs. Let's now explore how the data is categorized. 
 
-* Services (job queues, cache servers, search engines, etc.)
+Based on the Inpatient Prospective Payment System (IPPS), Medicare Part A (Hospital Insurance) is categorized into diagnosis-related groups (DRGs). The data published categorizes procedures into these DRGs.
 
-* Deployment instructions
+There are a few limitations on the data set:
 
-* ...
+Data was suppressed if a hospital had less than or equal to 10 cases within a Diagnostic-Related Group
+The data only includes the top 100 most utilized Diagnostic-related Groups. This accounts for approximately 60% of total Medicare IPPS discharges. 
+Although the data is wholly available down to the hospital level, I decided to look at average rates broken down by state.
+ 
 
+COLUMN HEADINGS
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Discharges is the total number of patient cases with that specific DRG. 
+Average Total Charges is the amount providers charge to Medicare. 
+Average Total Payments is the sum of the Medicare payment and any other co-payment or deductible paid out by either the beneficiary or their private insurance. 
+Average Medicare Payments is the amount Medicare pays out directly. 
+So who pays the difference between the total payment and the total charge? Well, no one. The provider has an agreement to accept that payment from Medicare. 
+The application has two main use cases. Using the Condition filter, you can see which states are the most and least expensive for a specific Diagnostic-Related Group. Using the State filter, you can see which Diagnostic-Related Groups are the most expensive in a specific state. 
+
+I will continue to improve the tool over time, so please let me know what you think or what else you might be interested in seeing! 
